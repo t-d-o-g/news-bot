@@ -11,7 +11,7 @@ const cheerio = require('cheerio');
 
 const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/contentDB';
 mongoose.Promise = Promise;
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;
 /* eslint-disable no-console */
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
