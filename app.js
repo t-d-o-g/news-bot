@@ -2,8 +2,20 @@ const createError = require('http-errors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const mongoose = require('mongoose');
 const path = require('path');
 const logger = require('morgan');
+
+const request = require('request');
+const cheerio = require('cheerio');
+
+const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/contentDB';
+mongoose.Promise = Promise;
+mongoose.connect(mongoDB);
+const db = mongoose.connection;
+/* eslint-disable no-console */
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+/* eslint-enable no-console */
 
 const indexRouter = require('./routes/index');
 
