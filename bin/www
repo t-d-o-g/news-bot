@@ -7,6 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('news-bot:server');
 const http = require('http');
+const mongoose = require('mongoose');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,14 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/contentDB';
+mongoose.Promise = Promise;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+const db = mongoose.connection;
+/* eslint-disable no-console */
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+/* eslint-enable no-console */
 
 /**
  * Listen on provided port, on all network interfaces.

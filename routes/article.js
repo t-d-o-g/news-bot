@@ -2,9 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
+const articleController = require('../controllers/article-controller'); 
+
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', articleController.index)
 
 module.exports = router;
