@@ -1,2 +1,11 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Articles</h1>
+<hr>
+<ul>
+  {{#each articles}}
+    {{title}}
+    </br>
+    <a href={{link}} target='_blank'>Link to Article</a>
+    </br>
+    </br>
+  {{/each}}
+</ul>
