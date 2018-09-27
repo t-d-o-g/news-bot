@@ -14,7 +14,7 @@ const ArticleSchema = new Schema({
   comments: {
     type: Schema.Types.ObjectId,
     ref: 'comments',
-  }
+  },
 });
 
 const articles = mongoose.model('articles', ArticleSchema);

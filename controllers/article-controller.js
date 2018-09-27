@@ -26,14 +26,14 @@ exports.index = (req, res) => {
   });
   db.articles
     .find({})
-    .sort({'_id': -1})
+    .sort({ _id: -1 })
     .limit(10)
     .exec((err, docs) => {
-    if (err) throw err;
-    const hbsObject = {
-      title: 'News Bot',
-      articles: docs,
-    };
-    res.render('index', hbsObject);
-  });
+      if (err) throw err;
+      const hbsObject = {
+        title: 'News Bot',
+        articles: docs,
+      };
+      res.render('index', hbsObject);
+    });
 };
