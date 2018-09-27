@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
   title: String,
-  body: String
+  body: String,
 });
 
 const comments = mongoose.model('comments', CommentSchema);

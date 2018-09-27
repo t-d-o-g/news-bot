@@ -5,16 +5,16 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   link: {
     type: String,
-    required: true
+    required: true,
   },
   comments: {
     type: Schema.Types.ObjectId,
-    ref: 'comments'
-  }
+    ref: 'comments',
+  },
 });
 
 const articles = mongoose.model('articles', ArticleSchema);
