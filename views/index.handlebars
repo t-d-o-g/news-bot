@@ -2,10 +2,15 @@
 <hr>
 <ul>
   {{#each articles}}
-    {{title}}
-    </br>
-    <a href={{link}} target='_blank'>Link to Article</a>
-    </br>
-    </br>
+    <div class="article">
+      <h3>{{title}}</h3>
+      <div id="summary">
+        {{summary}}
+      </div>
+      </br>
+      <a href={{link}} target='_blank'>Link to Article</a>
+      </br>
+      </br>
+    </div>
   {{/each}}
 </ul>

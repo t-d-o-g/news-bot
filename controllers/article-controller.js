@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 const db = require('../models');
 
 exports.index = (req, res) => {
-  request('https://businessinsider.com/', (err, res, data) => {
-    const $ = cheerio.load(data);
+  request('https://businessinsider.com/', (err, res, homepageHtml) => {
+    let $ = cheerio.load(homepageHtml);
 
     $('.title').each((i, el) => {
       const result = {};
@@ -17,13 +17,21 @@ exports.index = (req, res) => {
         result.link = link;
       }
 
-      db.articles.findOneAndUpdate(result, result, { upsert: true })
-        .then((dbArticles) => {
-          console.log(dbArticles);
-        })
-        .catch(err => err);
+      request(link, (err, res, postHtml) => {
+        $ = cheerio.load(postHtml);
+
+        const description = $('meta[name=description]');
+        result.summary = description.attr('content');
+
+        db.articles.findOneAndUpdate(result, result, { upsert: true })
+          .then((dbArticles) => {
+            console.log(dbArticles);
+          })
+          .catch(err => err);
+      });
     });
   });
+
   db.articles
     .find({})
     .sort({ _id: -1 })
