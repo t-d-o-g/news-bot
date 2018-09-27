@@ -19,7 +19,7 @@ exports.index = (req, res) => {
         result.link = link; 
       }
 
-      db.articles.create(result)
+      db.articles.findOneAndUpdate(result, result, {upsert: true})
         .then(dbArticle => {
           console.log(dbArticle);
         })
