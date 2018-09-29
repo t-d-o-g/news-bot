@@ -10,3 +10,12 @@ a {
   padding: 5px;
   margin: 5px;
   border-radius: 5px; }
+
+.submit-btn {
+  margin-left: 2%; }
+
+#comment {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%; }

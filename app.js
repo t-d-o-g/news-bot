@@ -6,6 +6,7 @@ const path = require('path');
 const logger = require('morgan');
 
 const articleRouter = require('./routes/article');
+const commentRouter = require('./routes/comment');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/', articleRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
