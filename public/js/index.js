@@ -8,12 +8,12 @@ $(document).ready(() => {
       method: 'POST',
       url: `article/${id}`,
       data: {
-        body: $('#comment').val()
-      }
+        body: $('#comment').val(),
+      },
     })
-    .then(data => {
-      console.log('DATA', data);
-    });
-    return false;
+      .then((data) => {
+        console.log('DATA', data);
+      });
+    $('#comment').val('');
   });
 });
