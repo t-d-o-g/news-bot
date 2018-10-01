@@ -4,7 +4,6 @@ const router = express.Router();
 
 const articleController = require('../controllers/article-controller');
 
-/* GET home page. */
-router.get('/', articleController.index);
+router.post('/:id', articleController.commentCreatePost)
 
 module.exports = router;

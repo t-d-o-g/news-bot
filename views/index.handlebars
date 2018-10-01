@@ -2,14 +2,16 @@
 <hr>
 <ul>
   {{#each articles}}
-    <div class="article">
+    <div class="article" id={{_id}}>
       <h3>{{title}}</h3>
       <div id="summary">
         {{summary}}
       </div>
       </br>
       <a href={{link}} target='_blank'>Link to Article</a>
-      {{> comments/comments}}
+      <u><h4>Comments:</h4></u>
+      {{> comments/comment-list}}
+      {{> comments/comment-form}}
       </br>
       </br>
     </div>

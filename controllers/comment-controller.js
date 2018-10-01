@@ -4,10 +4,6 @@ exports.commentCreateGet = (req, res) => {
   res.json('NOT IMPLEMENTED: Comments');
 }
 
-exports.commentCreatePost = (req, res) => {
-  res.json('NOT IMPLEMENTED: Comments');
-}
-
 exports.commentDeletePost = (req, res) => {
   res.json('NOT IMPLEMENTED: Comments');
 }

@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const logger = require('morgan');
 
+const indexRouter = require('./routes/index');
 const articleRouter = require('./routes/article');
 const commentRouter = require('./routes/comment');
 
@@ -22,7 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/', articleRouter);
+app.use('/', indexRouter);
+app.use('/article', articleRouter);
 app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
