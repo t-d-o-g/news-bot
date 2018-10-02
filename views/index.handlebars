@@ -9,8 +9,20 @@
       </div>
       </br>
       <a href={{link}} target='_blank'>Link to Article</a>
-      <u><h4>Comments:</h4></u>
-      {{> comments/comment-list}}
+      </br>
+      </br>
+      {{#if comments}}
+        <u><h4>Comments:</h4></u>
+          <div class="comment-item">
+            <ul>
+              {{#each comments}}
+                <li>
+                  {{comments.body}}
+                </li>
+              {{/each}}
+            <ul>
+          </div>
+        {{/if}}
       {{> comments/comment-form}}
       </br>
       </br>
