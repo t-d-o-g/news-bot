@@ -3,11 +3,11 @@ const cheerio = require('cheerio');
 
 const db = require('../models');
 
-exports.index = (req, res) => {
+exports.index = (req, hbsRes) => {
   request({
     url: 'https://businessinsider.com/',
     jar: true,
-  }, (err, res, homepageHtml) => {
+  }, (homepageErr, homepageRes, homepageHtml) => {
     let $ = cheerio.load(homepageHtml);
 
     $('.title').each((i, el) => {
@@ -23,7 +23,7 @@ exports.index = (req, res) => {
       request({
         url: link,
         jar: true,
-      }, (err, res, postHtml) => {
+      }, (postErr, postRes, postHtml) => {
         if (postHtml) {
           $ = cheerio.load(postHtml);
 
@@ -31,11 +31,7 @@ exports.index = (req, res) => {
           result.summary = description.attr('content');
         }
 
-        db.Article.findOneAndUpdate(result, result, { upsert: true })
-          .then((dbArticles) => {
-            res.json(dbArticles);
-          })
-          .catch(err => err);
+        db.Article.findOneAndUpdate(result, result, { upsert: true }).exec();
       });
     });
   });
@@ -45,12 +41,11 @@ exports.index = (req, res) => {
     .sort({ _id: -1 })
     .limit(10)
     .exec((err, docs) => {
-      console.log(docs);
       if (err) throw err;
       const hbsObject = {
         title: 'News Bot',
         articles: docs,
       };
-      res.render('index', hbsObject);
+      hbsRes.render('index', hbsObject);
     });
 };

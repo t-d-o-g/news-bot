@@ -1,4 +1,7 @@
+const Article = require('./Article');
+const Comment = require('./Comment');
+
 module.exports = {
-  Article: require('./Article'),
-  Comment: require('./Comment'),
+  Article,
+  Comment,
 };

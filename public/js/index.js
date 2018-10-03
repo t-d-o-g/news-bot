@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.create-form').on('submit', function (evt) {
+  $('.create-form').on('submit', function cb(evt) {
     evt.preventDefault();
     const id = $(this).parent('.article').attr('id');
     const body = $('#comment', this).val();
@@ -8,11 +8,10 @@ $(document).ready(() => {
       method: 'POST',
       url: `article/${id}`,
       data: {
-        body: body,
+        body,
       },
     })
-      .then((data) => {
-        console.log('DATA', data);
+      .then(() => {
         $('#comment').val('');
         window.location.reload(false);
       });

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const ArticleSchema = new Schema({
   title: {
@@ -23,10 +23,10 @@ const ArticleSchema = new Schema({
   ],
 });
 
-const autoPopulateComments = function(next) {
+const autoPopulateComments = function cb(next) {
   this.populate('comments');
   next();
-}
+};
 
 ArticleSchema
   .pre('findOne', autoPopulateComments)
