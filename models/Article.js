@@ -19,12 +19,10 @@ const ArticleSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'Comment',
-    }
-  ]
+    },
+  ],
 });
 
-
-/*
 const autoPopulateComments = function(next) {
   this.populate('comments');
   next();
@@ -33,12 +31,6 @@ const autoPopulateComments = function(next) {
 ArticleSchema
   .pre('findOne', autoPopulateComments)
   .pre('find', autoPopulateComments);
-  */
-
-  
-  
-
-  
 
 const Article = mongoose.model('Article', ArticleSchema);
 
