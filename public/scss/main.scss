@@ -25,6 +25,14 @@ a {
   width: 95%;
 }
 
-.comment-item {
+.comment-list {
   margin: 2%;
+}
+
+.comment-list ul {
+  list-style: none;
+}
+
+.fa-times-circle-o {
+  color: #000;
 }

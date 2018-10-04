@@ -16,4 +16,17 @@ $(document).ready(() => {
         window.location.reload(false);
       });
   });
+
+  $('.comment').on('click', function cb(evt) {
+    evt.preventDefault();
+    const id = $(this).attr('id');
+
+    $.ajax({
+      method: 'POST',
+      url: `comment/${id}`,
+    })
+      .then(() => {
+        window.location.reload(false);
+      });
+  });
 });

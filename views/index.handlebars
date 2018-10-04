@@ -13,10 +13,11 @@
       </br>
       {{#if comments}}
         <u><h4>Comments:</h4></u>
-          <div class="comment-item">
+          <div class="comment-list">
             <ul>
               {{#each comments}}
-                <li>
+                <li class="comment" id={{_id}}>
+                  <a href="#"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
                   {{body}}
                 </li>
               {{/each}}

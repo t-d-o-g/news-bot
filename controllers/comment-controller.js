@@ -1,5 +1,8 @@
 const db = require('../models');
 
 exports.commentDeletePost = (req, res) => {
-  res.json('NOT IMPLEMENTED: Comments');
+  db.Comment.findByIdAndRemove({ _id: req.params.id }, (err, response) => {
+    if (err) throw err;
+    res.send(response);
+  });
 };
