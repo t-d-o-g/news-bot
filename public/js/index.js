@@ -22,7 +22,7 @@ $(document).ready(() => {
     const id = $(this).attr('id');
 
     $.ajax({
-      method: 'POST',
+      method: 'DELETE',
       url: `comment/${id}`,
     })
       .then(() => {
